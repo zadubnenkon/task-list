@@ -4,7 +4,7 @@
     <div class="container py-3">
         <div class="col-lg-4 col-sm-6 mb-2">
             <select id="sortSelect" class="form-control" data-current="<?php echo $_SESSION['sort'];?>">
-              <option value="">Сначала новые</option>
+              <option value="id_desc">Сначала новые</option>
               <option value="done">Сначала выполненные</option>
               <option value="edited">Сначала отредактированные</option>
               <option value="name_asc">По имени (А -> Я)</option>
@@ -59,17 +59,17 @@
         <nav>
           <ul class="pagination justify-content-center">
             <li class="page-item <?php if ($curPage == 1) echo 'disabled'?>">
-              <a class="page-link" href="/task/list/<?php echo $curPage - 1?>" tabindex="-1">Пред.</a>
+              <a class="page-link" href="/<?php echo $curPage - 1?>" tabindex="-1">Пред.</a>
             </li>
             <?php for ($i = 1; $i <= $totalPages; $i++):?>
             <li class="page-item <?php if ($curPage == $i) echo 'active'?>">
-                <a class="page-link" href="/task/list/<?php echo $i?>">
+                <a class="page-link" href="/<?php echo $i?>">
                     <?php echo $i ?>
                 </a>
             </li>
             <?php endfor;?>
             <li class="page-item <?php if ($curPage == $totalPages) echo 'disabled'?>">
-              <a class="page-link" href="<?php echo $curPage + 1?>">След.</a>
+              <a class="page-link" href="/<?php echo $curPage + 1?>">След.</a>
             </li>
           </ul>
         </nav>
