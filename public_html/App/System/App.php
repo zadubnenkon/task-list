@@ -16,13 +16,14 @@ class App
         $arPath = explode('/', $path);
 
         array_shift($arPath);
-        if ($path === '/') {
-            header('location: task/list/');
-            return;
-        }
 
-        $controller = array_shift($arPath);
-        $action = array_shift($arPath);
+        if ($path === '/' || is_numeric($arPath[0])) {
+            $controller = 'task';
+            $action = 'list';
+        } else {
+            $controller = array_shift($arPath);
+            $action = array_shift($arPath);
+        }
 
         $params = $arPath;
         $controllerName = 'App\Controllers\\' . ucfirst($controller) . 'Controller';
